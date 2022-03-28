@@ -1,0 +1,62 @@
+name: "Create task"
+descirption: "Creates a task using the onOffice API"
+
+inputs:
+  token:
+    description: "string: user token"
+    required: true
+
+  secret:
+    description: "string: user secret"
+    required: true
+
+  api-verison:
+    description: "string: stable or latest"
+    required: false
+    default: "latest"
+
+  subject:
+    description: "string: subject"
+    required: true
+
+  text:
+    description: "string: text"
+    required: true
+
+  type:
+    description: "int: task type id"
+    required: true
+
+  responsible:
+    description: "string: name of responsible user or group"
+    required: true
+
+  responsible-is-group:
+    description: "int: 0 or 1"
+    required: false
+    default: 1
+
+  editor:
+    description: "string: name of editor"
+    required: false
+    default: ""
+
+  project:
+    description: "int: project id"
+    requried: false
+    default: ""
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  entrypoint: "entrypoint.php"
+  args:
+    - "--token=\"${{ inputs.token }}\""
+    - "--secret=\"${{ inputs.secret }}\""
+    - "--subject=\"${{ inputs.subject }}\""
+    - "--text=\"${{ inputs.text }}\""
+    - "--type=\"${{ inputs.type }}\""
+    - "--responsible=\"${{ inputs.responsible }}\""
+    - "--resonsibleIsGroup=\"${{ inputs.responsible-is-group }}\""
+    - "--editor=\"${{ inputs.editor }}\""
+    - "--project=\"${{ inputs.project }}\""
