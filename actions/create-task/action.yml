@@ -47,16 +47,26 @@ inputs:
     default: ""
 
 runs:
-  using: "docker"
-  image: "Dockerfile"
-  entrypoint: "entrypoint.php"
-  args:
-    - "--token=\"${{ inputs.token }}\""
-    - "--secret=\"${{ inputs.secret }}\""
-    - "--subject=\"${{ inputs.subject }}\""
-    - "--text=\"${{ inputs.text }}\""
-    - "--type=\"${{ inputs.type }}\""
-    - "--responsible=\"${{ inputs.responsible }}\""
-    - "--resonsibleIsGroup=\"${{ inputs.responsible-is-group }}\""
-    - "--editor=\"${{ inputs.editor }}\""
-    - "--project=\"${{ inputs.project }}\""
+  using: "composite"
+  steps:
+    - name: setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.1'
+        extensions: openssl, zip, zlib, json, curl
+
+    - name: composer install
+      shell: bash
+      working-directory: ${{ github.action_path }}
+      run: |
+        composer install -o --no-dev
+        php action.php \
+          --token="${{ inputs.token }}" \
+          --secret="${{ inputs.secret }}" \
+          --subject="${{ inputs.subject }}" \
+          --text="${{ inputs.text }}" \
+          --type="${{ inputs.type }}" \
+          --responsible="${{ inputs.responsible }}" \
+          --responsibleIsGroup="${{ inputs.responsibleIsGroup }}" \
+          --editor="${{ inputs.editor }}" \
+          --project="${{ inputs.project }}" 
