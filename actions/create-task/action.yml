@@ -57,12 +57,13 @@ runs:
 
     - name: composer install
       shell: bash
+      env:
+        OO_TOKEN: ${{ inputs.token }}
+        OO_SECRET: ${{ inputs.secret }}
       working-directory: ${{ github.action_path }}
       run: |
         composer install -o --no-dev
         php action.php \
-          --token="${{ inputs.token }}" \
-          --secret="${{ inputs.secret }}" \
           --subject="${{ inputs.subject }}" \
           --text="${{ inputs.text }}" \
           --type="${{ inputs.type }}" \

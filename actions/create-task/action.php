@@ -6,8 +6,6 @@ require __DIR__ . '/vendor/autoload.php';
 use onOffice\SDK\onOfficeSDK;
 
 $optionsConfig = [
-    'token:',               // string (required)
-    'secret:',              // string (required)
     'api-version::',        // string [stable|latest] (default: latest)
     'subject:',             // string (required)
     'text:',                // string (required)
@@ -41,4 +39,4 @@ if (isset($options['project'])) {
 }
 
 $handleCreateTask = $sdk->callGeneric(onOfficeSDK::ACTION_ID_CREATE, 'task', $parameters);
-$sdk->sendRequests($options['token'], $options['secret']);
+$sdk->sendRequests(getenv('OO_TOKEN'), getenv('OO_SECRET'));
