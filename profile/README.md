@@ -1,6 +1,6 @@
 ## We are onOffice
 
-![onOffice banner](./onOffice-banner.png)
+![onOffice - develop together, work flexibly, automate routine tasks](./onOffice-banner.png)
 
 We create software and websites for real estate agents. Our CRM software is specifically developed for the management of real estate properties and leads. We've been around since 2001 and cloud-based from the start.
 
