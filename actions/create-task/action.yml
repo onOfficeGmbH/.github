@@ -1,0 +1,73 @@
+name: "Create task"
+descirption: "Creates a task using the onOffice API"
+
+inputs:
+  token:
+    description: "string: user token"
+    required: true
+
+  secret:
+    description: "string: user secret"
+    required: true
+
+  api-verison:
+    description: "string: stable or latest"
+    required: false
+    default: "latest"
+
+  subject:
+    description: "string: subject"
+    required: true
+
+  text:
+    description: "string: text"
+    required: true
+
+  type:
+    description: "int: task type id"
+    required: true
+
+  responsible:
+    description: "string: name of responsible user or group"
+    required: true
+
+  responsible-is-group:
+    description: "int: 0 or 1"
+    required: false
+    default: 1
+
+  editor:
+    description: "string: name of editor"
+    required: false
+    default: ""
+
+  projects:
+    description: "string: comma-separated list project ids (e.g. 1,2,3)"
+    requried: false
+    default: ""
+
+runs:
+  using: "composite"
+  steps:
+    - name: setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.1'
+        extensions: openssl, zip, zlib, json, curl
+
+    - name: composer install
+      shell: bash
+      env:
+        OO_TOKEN: ${{ inputs.token }}
+        OO_SECRET: ${{ inputs.secret }}
+      working-directory: ${{ github.action_path }}
+      run: |
+        composer install -o --no-dev
+        php action.php \
+          --subject="${{ inputs.subject }}" \
+          --text="${{ inputs.text }}" \
+          --type="${{ inputs.type }}" \
+          --responsible="${{ inputs.responsible }}" \
+          --responsibleIsGroup="${{ inputs.responsibleIsGroup }}" \
+          --editor="${{ inputs.editor }}" \
+          --projects="${{ inputs.projects }}" 

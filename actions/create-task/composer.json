@@ -1,0 +1,15 @@
+{
+    "name": "onoffice/github-action-create-task",
+    "description": "GitHub Action to create a task using the onOffice API",
+    "type": "project",
+    "require": {
+        "onoffice/sdk": "^0.2.0"
+    },
+    "authors": [
+        {
+            "name": "Dominik Kaisers",
+            "email": "d.kaisers@onoffice.de"
+        }
+    ],
+    "minimum-stability": "stable"
+}
