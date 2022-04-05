@@ -41,8 +41,8 @@ inputs:
     required: false
     default: ""
 
-  project:
-    description: "int: project id"
+  projects:
+    description: "string: comma-separated list project ids (e.g. 1,2,3)"
     requried: false
     default: ""
 
@@ -70,4 +70,4 @@ runs:
           --responsible="${{ inputs.responsible }}" \
           --responsibleIsGroup="${{ inputs.responsibleIsGroup }}" \
           --editor="${{ inputs.editor }}" \
-          --project="${{ inputs.project }}" 
+          --projects="${{ inputs.projects }}" 

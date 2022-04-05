@@ -20,15 +20,15 @@ You can add the action to any GitHub workflow job using the following syntax:
 
 The following input parameters are accepted:
 
-| name                 | type   | info                              | required | default |
-|----------------------|--------|-----------------------------------|----------|---------|
-| token                | string | the onOffice API user token       | yes      |         |
-| secret               | string | the onOffice API user secret      | yes      |         |
-| api-version          | string | API version (stable\|latest)      | no       | latest  |
-| subject              | string | subject of the task               | yes      |         |
-| text                 | string | text of the task                  | yes      |         |
-| type                 | int    | task type id                      | yes      |         |
-| responsible          | string | name of responsible user or group | yes      |         |
-| responsible-is-group | int    | 0 for users, 1 for groups         | no       | 1       |
-| editor               | string | name of editor (user)             | no       |         |
-| project              | int    | related project id                | no       |         |
+| name                 | type   | info                                | required | default |
+|----------------------|--------|-------------------------------------|----------|---------|
+| token                | string | the onOffice API user token         | yes      |         |
+| secret               | string | the onOffice API user secret        | yes      |         |
+| api-version          | string | API version (stable\|latest)        | no       | latest  |
+| subject              | string | subject of the task                 | yes      |         |
+| text                 | string | text of the task                    | yes      |         |
+| type                 | int    | task type id                        | yes      |         |
+| responsible          | string | name of responsible user or group   | yes      |         |
+| responsible-is-group | int    | 0 for users, 1 for groups           | no       | 1       |
+| editor               | string | name of editor (user)               | no       |         |
+| projects             | string | comma-separated list of project ids | no       |         |

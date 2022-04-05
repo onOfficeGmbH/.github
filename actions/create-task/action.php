@@ -13,7 +13,7 @@ $optionsConfig = [
     'responsible:',         // string (required)
     'responsibleIsGroup::', // int [0|1] (default: 1)
     'editor::',             // string
-    'project::',            // int
+    'projects::',            // string (comma-separated list of ids)
 ];
 $options = getopt('', $optionsConfig);
 
@@ -34,8 +34,8 @@ if (isset($options['editor'])) {
     $parameters['data']['Bearbeiter'] = $options['editor'];
 }
 
-if (isset($options['project'])) {
-    $parameters['relatedProjectIds'] = [ $options['project'] ];
+if (isset($options['projects'])) {
+    $parameters['relatedProjectIds'] = explode(',', $options['projects']);
 }
 
 $handleCreateTask = $sdk->callGeneric(onOfficeSDK::ACTION_ID_CREATE, 'task', $parameters);
