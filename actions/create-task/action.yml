@@ -68,6 +68,6 @@ runs:
           --text="${{ inputs.text }}" \
           --type="${{ inputs.type }}" \
           --responsible="${{ inputs.responsible }}" \
-          --responsibleIsGroup="${{ inputs.responsibleIsGroup }}" \
+          --responsibleIsGroup="${{ inputs.responsible-is-group }}" \
           --editor="${{ inputs.editor }}" \
           --projects="${{ inputs.projects }}" 
