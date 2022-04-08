@@ -13,7 +13,7 @@ $optionsConfig = [
     'responsible:',         // string (required)
     'responsibleIsGroup::', // int [0|1] (default: 1)
     'editor::',             // string
-    'projects::',            // string (comma-separated list of ids)
+    'projects::',           // string (comma-separated list of ids)
 ];
 $options = getopt('', $optionsConfig);
 
